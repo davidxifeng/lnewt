@@ -14,10 +14,12 @@ It has been tested only on Mac OS X and Centos 6.
 
 install deps
 
-> MacOS: `brew install newt`
-> CentOS: `yum install -y newt-devel`
+```zsh
+brew install newt # MacOS X
+yum install -y newt-devel # CentOS
+```
 
-then just do `make`, run test with `make test`
+and then just do `make`, run test with `make test`
 
 [newt]: https://en.wikipedia.org/wiki/Newt_(programming_library)
 [luanewt]: https://github.com/SnarkyClark/luanewt
