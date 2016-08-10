@@ -1,7 +1,17 @@
 # a newt binding library for Lua 5.3
 
-this is a simple [newt][newt] binding library for lua 5.3,
-it is fork from [luanewt][luanewt].
+This is a simple [newt][newt] binding library for lua 5.3, fork from [luanewt][luanewt].
+
+It has been tested only on Mac OS X and Centos 6.
+
+## build
+
+1. install deps
+
+MacOS: `brew install newt`
+CentOS: `yum install -y newt-devel`
+
+2. make
 
 ## TODO
 

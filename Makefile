@@ -1,23 +1,29 @@
-CFLAGS = -fPIC -O3 -Wall -std=c99 -pedantic
-CFLAGS += $(INC)
-
 INC = -Isrc
 
 ifdef LUAPATH
 	INC += -I$(LUAPATH)
 endif
 
-LFLAGS = -shared
+UNAME_S := $(shell uname -s)
 
-NEWT_SRC = src/luanewt.c src/luanewt.h
+ifeq ($(UNAME_S), Darwin)
+	INC += -I/usr/local/include
+	NEWT_LIB = -L/usr/local/lib -lnewt
+	SHARED_LIB = -dynamiclib -Wl,-undefined,dynamic_lookup
+else
+	NEWT_LIB = -lnewt
+	SHARED_LIB = -shared
+endif
+
+CFLAGS = -fPIC -O3 -Wall -std=c99 -pedantic
+CFLAGS += $(INC)
+
 NEWT_SO = newt.so
-NEWT_LIB = -lnewt
-
 
 all: $(NEWT_SO)
 
-$(NEWT_SO): $(NEWT_SRC)
-	$(CC) $(LFLAGS) -o $@ $(CFLAGS) $< $(NEWT_LIB)
+$(NEWT_SO): src/luanewt.c src/luanewt.h
+	$(CC) $(SHARED_LIB) -o $@ $(CFLAGS) $< $(NEWT_LIB)
 
 clean:
 	$(RM) $(NEWT_SO)
