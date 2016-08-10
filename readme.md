@@ -8,8 +8,8 @@ It has been tested only on Mac OS X and Centos 6.
 
 1. install deps
 
-MacOS: `brew install newt`
-CentOS: `yum install -y newt-devel`
+* MacOS: `brew install newt`
+* CentOS: `yum install -y newt-devel`
 
 2. make
 
